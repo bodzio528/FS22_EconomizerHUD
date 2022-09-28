@@ -1,19 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="69">
     <author>Bodzio528</author>
-    <version>1.0.0.0</version>
+    <version>1.0.0.1</version>
     <title>
         <en>Fuel Usage HUD</en>
         <de>Spritverbrauch HUD</de>
         <fr>Utilisation De Carburant HUD</fr>
-		<pl>Chwilowe Spalanie HUD</pl>
+        <pl>Chwilowe Spalanie HUD</pl>
     </title>
     <iconFilename>modIcon.dds</iconFilename>
     <multiplayer supported="true"/>
     <description>
-        <en><![CDATA[Small HUD that shows instantaneous diesel fuel usage.]]></en>
+        <en><![CDATA[Small HUD that shows momentary fuel consumption.]]></en>
         <de><![CDATA[Kleines HUD, das den momentanen Kraftstoffverbrauch anzeigt.]]></de>
-		<fr><![CDATA[HUD qui montre la consommation instantanée de carburant.]]></fr>
+        <fr><![CDATA[HUD qui montre la consommation instantanée de carburant.]]></fr>
         <pl><![CDATA[Wyświetlacz pokazujący chwilowe zużycie oleju napędowego.]]></pl>
     </description>
     <extraSourceFiles>
