@@ -1,20 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<modDesc descVersion="69">
+<modDesc descVersion="75">
     <author>Bodzio528</author>
-    <version>1.0.0.1</version>
+    <version>1.0.0.2</version>
     <title>
         <en>Fuel Usage HUD</en>
         <de>Spritverbrauch HUD</de>
         <fr>Utilisation De Carburant HUD</fr>
         <pl>Chwilowe Spalanie HUD</pl>
     </title>
-    <iconFilename>modIcon.dds</iconFilename>
+    <iconFilename>icon_economizer.dds</iconFilename>
     <multiplayer supported="true"/>
     <description>
-        <en><![CDATA[Small HUD that shows momentary fuel consumption.]]></en>
-        <de><![CDATA[Kleines HUD, das den momentanen Kraftstoffverbrauch anzeigt.]]></de>
-        <fr><![CDATA[HUD qui montre la consommation instantanée de carburant.]]></fr>
-        <pl><![CDATA[Wyświetlacz pokazujący chwilowe zużycie oleju napędowego.]]></pl>
+        <en><![CDATA[
+Small HUD that shows momentary fuel consumption.
+
+Changelog:
+1.0.0.2 fixed script error caused by entering vehicles with no fuel usage.
+]]></en>
+        <de><![CDATA[
+Kleines HUD, das den momentanen Kraftstoffverbrauch anzeigt.
+
+Changelog:
+1.0.0.2 Skriptfehler aufgrund fehlenden Treibstoffverbrauchs behoben.
+]]></de>
+        <fr><![CDATA[
+HUD qui montre la consommation instantanée de carburant.
+
+Changelog:
+1.0.0.2 fixed script error caused by entering vehicles with no fuel usage.
+]]></fr>
+        <pl><![CDATA[
+Wyświetlacz pokazujący chwilowe zużycie oleju napędowego.
+
+Changelog:
+1.0.0.2 naprawiono błąd w skrypcie dotyczący pojazdów bez baku.
+]]></pl>
     </description>
     <extraSourceFiles>
         <sourceFile filename="EconomizerHUD.lua"/>

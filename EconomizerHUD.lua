@@ -44,35 +44,39 @@ end
 
 function EconomizerHUD:update(dt)
     if g_client ~= nil and g_currentMission.hud.isVisible and g_currentMission.controlledVehicle ~= nil then
-        EconomizerHUD.time = EconomizerHUD.time + dt
-        if EconomizerHUD.time > EconomizerHUD.REFRESH_PERIOD then
-            EconomizerHUD.time = EconomizerHUD.time - EconomizerHUD.REFRESH_PERIOD
+		local vehicle = g_currentMission.controlledVehicle.rootVehicle
+		if vehicle.getConsumerFillUnitIndex ~= nil then
+			EconomizerHUD.time = EconomizerHUD.time + dt
+			if EconomizerHUD.time > EconomizerHUD.REFRESH_PERIOD then
+				EconomizerHUD.time = EconomizerHUD.time - EconomizerHUD.REFRESH_PERIOD
+				
+				local isDieselMotor = (vehicle:getConsumerFillUnitIndex(FillType.DIESEL) ~= nil)
+				if isDieselMotor then					
+					local spec = vehicle.spec_motorized -- vehicle.spec_economizer
+					if spec == nil then
+						return -- no economizer!
+					end
 
-            local vehicle = g_currentMission.controlledVehicle.rootVehicle
+					if not vehicle.isServer then
+						self:updateConsumers(vehicle, dt)
+					end
 
-            local isDieselMotor = (vehicle:getConsumerFillUnitIndex(FillType.DIESEL) ~= nil)
-            if isDieselMotor then
-                local spec = vehicle.spec_motorized -- vehicle.spec_economizer
-                if spec == nil then
-                    return -- no economizer!
-                end
+					local value = spec.lastFuelUsage or 0.0
+					if not spec.isMotorStarted then
+						value = 0.0
+					end
 
-                if not vehicle.isServer then
-                    self:updateConsumers(vehicle, dt)
-                end
-
-                local value = spec.lastFuelUsage or 0.0
-                if not spec.isMotorStarted then
-                    value = 0.0
-                end
-
-                EconomizerHUD.instantaneous = string.format("%.1f l/h", value)
-                EconomizerHUD.display = true
-            else
-                EconomizerHUD.display = false
-            end
-        end
-    else
+					-- TODO: get alternative units from options: eg. hours per gallon
+					EconomizerHUD.instantaneous = string.format("%.1f l/h", value)
+					EconomizerHUD.display = true
+				else -- no DIESEL
+					EconomizerHUD.display = false
+				end
+			end
+		else -- no fill unit
+			EconomizerHUD.display = false
+		end
+    else -- no controlled vehicle
         EconomizerHUD.display = false
     end
 end
